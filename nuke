@@ -9,7 +9,4 @@ display_number=`ps -ef | grep "Xquartz :\d" | grep -v xinit | awk '{ print $9; }
 /opt/X11/bin/xhost + $ip
 /usr/local/bin/docker rm nuke
 
-/usr/local/bin/docker run -d --name nuke \
--e DISPLAY=$ip$display_number \
--v /tmp/.X11-unix:/tmp/.X11-unix \
--v ~/.gtkrc:/root/.gtkrc geoffroygivry/nuke-docker
+docker run -ti --rm -e DISPLAY=$ip$display_number -v /tmp/.X11-unix:/tmp/.X11-unix -v ~/.gtkrc:/root/.gtkrc geoffroygivry/nuke-docker:latest

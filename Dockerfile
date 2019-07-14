@@ -34,18 +34,15 @@ RUN wget -P /tmp/ \
 USER root
 RUN ln -s /app/Nuke${NUKE_VERSION}/Nuke${NUKE_MAJOR}.${NUKE_MINOR} /usr/local/bin/Nuke
 RUN ln -s /app/Nuke${NUKE_VERSION}/Nuke${NUKE_MAJOR}.${NUKE_MINOR} /usr/local/bin/Nuke${NUKE_MAJOR}.${NUKE_MINOR}
-USER nuke
+
 
 ENV PATH=${PATH}:/app/Nuke${NUKE_VERSION}
 ENV PYTHON_PATH=/app/Nuke${NUKE_VERSION}
 
-ARG foundry_LICENSE=5053@192.168.1.8
+EXPOSE 4101
+
+ARG foundry_LICENSE=4101@192.168.1.3
 ENV foundry_LICENSE=${foundry_LICENSE}
-
-# Create a User and switch to it. Nuke does not work well under root User.
-
-
-# Mount Volumes.
 
 
 # Set additional ENV's specially for Nuke
